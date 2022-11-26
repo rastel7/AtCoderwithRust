@@ -5,6 +5,9 @@ authors = ["hamap"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev]
+opt-level = 3
+debug = 2
 
 [dependencies]
 num = "0.2.1"  

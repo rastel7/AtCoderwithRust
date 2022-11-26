@@ -1,4 +1,4 @@
-#![allow(unused_results,dead_code)]
+#![allow(unused_results, dead_code)]
 struct UnionFind {
     tops: Vec<usize>,
     size: Vec<usize>,
@@ -46,4 +46,15 @@ impl UnionFind {
         let ry = self.root(ry);
         rx == ry
     }
+}
+
+#[test]
+fn it_works() {
+    let n = 5;
+    let mut uf = UnionFind::new(n);
+    uf.merge(0, 1);
+    uf.merge(2, 3);
+    assert_eq!(uf.issame(0, 1), true);
+    assert_eq!(uf.issame(2, 3), true);
+    assert_eq!(uf.issame(0, 2), false);
 }

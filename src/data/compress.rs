@@ -19,7 +19,7 @@ impl<T: Clone + Ord + Hash + Copy> Compress<T> {
         }
         ret
     }
-    fn get(&self, x: T) -> Option<usize> {
+    fn f(&self, x: T) -> Option<usize> {
         match self.maps.get(&x) {
             None => None,
             Some(w) => Some(w.clone()),
@@ -32,4 +32,14 @@ impl<T: Clone + Ord + Hash + Copy> Compress<T> {
             None
         }
     }
+}
+
+#[test]
+fn it_works() {
+    let vec = vec![0, 1, 4, 5, 6, 8, 10];
+    let  comp = Compress::new(vec);
+    assert_eq!(comp.f(0), Some(0));
+    assert_eq!(comp.f(5), Some(3));
+    assert_eq!(comp.invf(6), Some(10));
+    assert_eq!(comp.invf(4), Some(6));
 }
