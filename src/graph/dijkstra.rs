@@ -81,6 +81,7 @@ impl Dijkstra<i64> {
                 binheap.push((Some(next), edge.to));
             }
         }
+        dist[s]=Some(0);
         dist
     }
 }
